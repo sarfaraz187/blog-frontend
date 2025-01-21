@@ -1,47 +1,62 @@
-# Svelte + TS + Vite
+# Blog Frontend and Admin Dashboard - Svelte
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+A simple frontend built with Svelte that interacts with the Blog API built with Node.js, Express, MongoDB, and TypeScript. The frontend provides a user-friendly interface for blog-related actions, including signup, signin, and managing user profiles.
 
-## Recommended IDE Setup
+## Features
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+- User signup and signin
+- Displaying blog posts
+- User profile management
+- Role-based access (Admin, Editor, User)
+- Cookie-based Authentication using JWT (JSON Web Tokens)
 
-## Need an official Svelte framework?
+## Tech Stack
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- **Frontend**: Svelte
+- **State Management**: Svelte Store
+- **API Integration**: Fetch API for communicating with the backend
+- **Authentication**: JWT (stored in localStorage or cookies)
+- **Styling**: CSS/SASS or Tailwind (optional, based on your setup)
 
-## Technical considerations
+## Installation
 
-**Why use this over SvelteKit?**
+### Prerequisites
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+Ensure you have the following installed:
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+- **Node.js** (v14.x or higher)
+- **Svelte** (set up via the official template or SvelteKit)
+- **API Endpoint**: Ensure the backend API is running and accessible
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+### Setup
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+1. Clone this repository:
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+   ```bash
+   git clone https://github.com/sarfaraz187/blog-frontend.git
+   cd blog-frontend
+   ```
 
-**Why include `.vscode/extensions.json`?**
+2. Install dependencies:
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+   ```bash
+   npm install
+   ```
 
-**Why enable `allowJs` in the TS template?**
+3. Configure environment variables:
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+   Create a `.env` file in the root of your project to configure the API URL and other settings:
 
-**Why is HMR not preserving my local component state?**
+   ```bash
+   VITE_API_URL=http://localhost:8000
+   ```
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+   Replace the `VITE_API_URL` with the URL of your backend API if it's running elsewhere.
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+4. Run the development server:
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+   ```bash
+   npm run dev
+   ```
+
+5. Open the frontend in your browser at [http://localhost:5173](http://localhost:5173).
